@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-"""
+
 
 REST_FRAMEWORK = {
     
@@ -92,7 +92,17 @@ REST_FRAMEWORK = {
      )
    
  }
- """
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),  # Set token expiration time
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+
+
+
+ 
 
 
 REST_FRAMEWORK = {

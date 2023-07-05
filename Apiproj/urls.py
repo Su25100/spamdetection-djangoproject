@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from spamapp import views
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView,TokenVerifyView
+    
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('spamcheck/',views.PhoneNumberListAPIView.as_view()),
     path('srchbyno/<str:phone_no>/',views.SearchByNoAPIView.as_view()),
-    path('markspam/',views.MarkNoAsSpamAPIView.as_view())
-    
+    path('markspam/',views.MarkNoAsSpamAPIView.as_view()),
+    path('api/token/',TokenObtainPairView.as_view()),
+    path('api/token/refresh/',TokenRefreshView.as_view()),
+    path('api/verifytoken',TokenVerifyView.as_view())
 ]

@@ -19,9 +19,6 @@ class PhoneNumberListAPIView(APIView):
             })
         
            
-        
-            
-
     def post(self,request):
         try:
             serializer=PhoneNumberSerializer(data=request.data)
@@ -53,11 +50,10 @@ class SearchByNoAPIView(APIView):
     def get(self,request,phone_no):
         try:
             users = User.objects.filter(phone_no=phone_no)
-            print(users)
             serializer = UserSerializer(users,many=True)
             return Response(serializer.data)
         except User.DoesNotExist:
-          return Response([])
+          return Response({"message":"incorrect data"})
         
         
 class  MarkNoAsSpamAPIView(APIView):
